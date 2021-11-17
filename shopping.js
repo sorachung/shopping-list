@@ -12,7 +12,7 @@ const shoppingList = [
     {
         id: 3,
         item: "pizza rolls",
-        price: "5.99"
+        price: "10.99"
     },
     {
         id: 4,
@@ -22,13 +22,27 @@ const shoppingList = [
     {
         id: 5,
         item: "sandwich buns",
-        price: "3.99"
+        price: "9.99"
     }
 ]
 
 // console.log(shoppingList);
 
 shoppingList.forEach((item) => item.dateCreated = new Date());
+
+
+
+const bananas = {
+    item: "bananas",
+    price: 1.49
+}
+
+addToShoppingList(bananas)
+
+console.log(shoppingList)
+console.log("items over $8:", filterExpensiveItems())
+
+//functions
 
 function addToShoppingList(shopItem) {
     // get id
@@ -43,11 +57,13 @@ function addToShoppingList(shopItem) {
     shoppingList.push(shopItem);
 }
 
-const bananas = {
-    item: "bananas",
-    price: 1.49
+function filterExpensiveItems() {
+    const expensiveItems = [];
+    for (const item of shoppingList) {
+        if (item.price >= 8) {
+            expensiveItems.push(item)
+        }
+    }
+    return expensiveItems;
 }
 
-addToShoppingList(bananas)
-
-console.log(shoppingList)
